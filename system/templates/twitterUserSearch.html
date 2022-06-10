@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Twitter Type{% endblock %}
+{% block content %}
+    <img class="center" src="../static/twitter.png" alt="Twitter User Search"
+         height="200px" width="200px"></img>
+    <h1 align="center"><b>Sentiment Analysis</b></h1>
+    <p align="center" style="font-size:20px;">Import Live Tweets</p>
+    <br/>
+    <br/>
+    <p style="font-size:20px;">Categorises 10 latest tweets to be Positive or Negative based on User Twitter Handle</p>
+    <form method="POST">
+        <input name="text" id="text" class="form-control" style="font-size:17px;" placeholder="Enter any Twitter Handle"></input>
+        <br/>
+        <div align="center">
+            <button type="submit" class="btn btn-primary">Analyse</button>
+        </div>
+    </form>
+{% endblock %}

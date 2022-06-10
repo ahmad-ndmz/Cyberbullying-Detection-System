@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}User Type{% endblock %}
+{% block content %}
+    <img class="center" src="../static/keyboard.png" alt="User Type"
+         height="200px"></img>
+    <br>
+    <h1 align="center"><b>Sentiment Analysis</b></h1>
+    <p align="center" style="font-size:20px;">Type Your Own Tweet</p>
+    <br/>
+    <br/>
+    <p style="font-size:20px;">Categorises tweet to be Positive or Negative</p>
+    <form method="POST">
+        <textarea name="text" id="text" class="form-control" style="font-size:17px;"
+                  placeholder="Enter the Tweet here to be analysed"></textarea>
+        <br/>
+        <div align="center">
+            <button type="submit" class="btn btn-primary" style="font-size:20px;">Analyse</button>
+        </div>
+    </form>
+{% endblock %}

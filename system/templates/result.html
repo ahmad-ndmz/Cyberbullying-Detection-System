@@ -1,0 +1,74 @@
+{% extends "base.html" %} {% block title %}Result{% endblock %}
+{% block content %}
+    <br/>
+    <h1><b>Sentiment Analysis Result</b></h1>
+    {% if data %}
+        <br/>
+        <p style="font-size:20px;">Tweet : {{ text }}</p>
+        <br/>
+        {% if data == '0' %}
+            <p style="font-size:17px;">Sentiment : <b style="color:blue;">Positive</b><p style="font-size:60px">🙂🙂</p>
+            THIS IS <b>NOT</b> CYBERBULLYING<span class="tab"></span><br><br>
+            <a href="/user-type">
+                <button type="submit" class="btn btn-primary" align="center">Re-Enter Text</button>
+            </a>
+            </p>
+        {% else %}
+            <p style="font-size:17px;">Sentiment : <b style="color:red;">Negative</b><p style="font-size:60px">🙁🙁</p>
+            THIS IS CYBERBULLYING<span class="tab"></span><br><br>
+            <a href="https://www.mcmc.gov.my/en/faqs/online-content-problems/what-are-the-steps-required-for-me-to-lodge-compla">
+                <button type="submit" class="btn btn-primary" align="center">Report</button>
+            </a>
+            <a href="/user-type">
+                <button type="submit" class="btn btn-primary" align="center">Re-Enter Text</button>
+            </a>
+            </p>
+        {% endif %}
+        <br/>
+    {% else %}
+        <br/>
+        <p style="font-size:20px;">Twitter Handle : <b><i>{{ username }}</i></b></p>
+        <br/>
+        <table style="font-size:17px; background-color: papayawhip;">
+            {% if not username_df.empty %}
+                <tr>
+                    <th style="text-align:center">No</th>
+                    <th style="text-align:center">Tweet</th>
+                    <th style="text-align:center">Sentiment</th>
+                </tr>
+                {% for index,tweet in username_df.iterrows() %}
+                    <tr>
+                        <td style="text-align:center">{{ index + 1 }}</td>
+                        <td>
+                            <div class="col">
+                                {{ tweet['Tweet'] }}
+                            </div>
+                        </td>
+                        <td>
+                            {% if tweet['Sentiment'] == '0' %}
+                                <p style="text-align:center; color:blue">Positive</p>
+                            {% else %}
+                                <p style="text-align:center; color:red">Negative</p>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endif %}
+        </table>
+        {% if not username_df.empty %}
+            <br><br>
+            <p style="font-size:20px"><b style="font-size:25px">{{ (username_df['Sentiment'] == '1').sum() }} / 10</b>
+                of the Tweets are considered to be Cyberbullying</p>
+            <br>
+            <a href="https://www.mcmc.gov.my/en/faqs/online-content-problems/what-are-the-steps-required-for-me-to-lodge-compla">
+                <button type="submit" class="btn btn-primary" align="center">Report</button>
+            </a>
+            <a href="/twitter-user-search">
+                <button type="submit" class="btn btn-primary" align="center">New Search</button>
+            </a>
+            <br><br><br><br><br><br>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+

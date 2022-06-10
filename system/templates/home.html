@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Home{% endblock %}
+{% block content %}
+    <br xmlns="http://www.w3.org/1999/html"/>
+    <h1 align="center" style="background-color: burlywood; font-weight: bold; font-size:50px">Cyberbullying Detection System</h1>
+    <p align="center" style="font-size:20px;">Perform Sentiment Analysis on Tweets to Detect Cyberbullying</p>
+    <br/>
+    <br/>
+    <br/>
+    <form method="POST">
+        <div class="row">
+            <div class="column">
+                <h5 align="center"><a id="twitterText" href="/user-type"><img
+                        src="../static/keyboard.png" alt="User Type"
+                        height="200px"></a></h5>
+                <p align="center" style="font-size:25px"><b>Type Your Own Tweet</b></p>
+                <p align="center" style="font-size:17px;">You can enter your own tweet</p>
+            </div>
+            <div class="column">
+                <h5 align="center"><a id="twitterText" href="/twitter-user-search"><img
+                        src="../static/twitter.png" alt="Twitter User Search"
+                        height="200px" width="200px"></a></h5>
+                <p align="center" style="font-size:25px"><b>Import Live Tweets</b></p>
+                <p align="center" style="font-size:17px">You can import live tweets </br>by using any Twitter
+                    handle</p>
+            </div>
+        </div>
+    </form>
+{% endblock %}
+
